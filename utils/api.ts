@@ -24,3 +24,17 @@ export const updatedEntry = async (id, content) => {
     return data.data
   }
 }
+
+export const askQuestion = async question => {
+
+  console.log('question:', question);
+  const res = await fetch(new Request(createURL('/api/question'), {
+    method: 'POST',
+    body: JSON.stringify({question}),
+  }))
+
+  if (res.ok) {
+    const data = await res.json()
+    return data.data
+  }
+}
